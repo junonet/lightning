@@ -53,6 +53,7 @@
 		"npm-check-updates": "^11.5.11",
 		"rimraf": "^3.0.2",
 		"run-sequence": "^2.2.1",
+		"sass": "^1.36.0",
 		"stylelint": "^13.13.1",
 		"stylelint-config-wordpress": "^17.0.0",
 		"webpack": "^5.37.0",

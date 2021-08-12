@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+test
+
 v14.7.0
 [ G2/G3 ][ Bug fix ] Fix Widget setting page JavaScript Error
 

@@ -121,3 +121,30 @@ function lightning_g2_template_compatible() {
 	wp_reset_postdata();
 	wp_reset_query();
 }
+
+/**
+ * キーカラーが
+ * lightning_theme_options['color_key'] から
+ * vk_color_manager_options['color_custom_1'] に変更になったため書き換え処理
+ *
+ * 新しい vk_color_manager_options['color_custom_1'] が空だった場合のみ 旧 color_key を取得してアップデートする
+ * リリース直後は常時実行し、期間を置いてから管理画面でのみ実行に移行
+ *
+ * @since 14.11.0
+ */
+function lightning_g3_key_color_to_manager_update() {
+	$vk_color_manager_options = get_option( 'vk_color_manager_options' );
+	if ( empty( $vk_color_manager_options['color_custom_1'] ) ) {
+		$lightning_theme_options = lightning_get_theme_options();
+		if ( ! empty( $lightning_theme_options['color_key'] ) ) {
+			$saved_color_key = esc_html( $lightning_theme_options['color_key'] );
+		} else {
+			$saved_color_key = '#337ab7';
+		}
+		if ( ! is_array( $vk_color_manager_options ) ) {
+			$vk_color_manager_options = array();
+		}
+		$vk_color_manager_options['color_custom_1'] = $saved_color_key;
+		update_option( 'vk_color_manager_options', $vk_color_manager_options );
+	}
+}

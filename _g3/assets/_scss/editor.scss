@@ -77,3 +77,14 @@ input[type="text"].block-editor-media-placeholder__url-input-field{
 	border-radius: unset;
 	padding: 0.5em;
 }
+
+/*
+記事編集画面でフルスクリーンを解除してWordPressの左サイドバー管理メニューを表示した場合に
+テーマのCSSの影響を受けるので打ち消し
+*/
+#adminmenu {
+	font-size:14px;
+	ul {
+		margin-bottom:0;
+	}
+}
